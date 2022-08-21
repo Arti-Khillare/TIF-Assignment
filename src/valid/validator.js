@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 
-
+//checking it given is valid 
 const isValidObjectId = function(ObjectId) {
     return mongoose.Types.ObjectId.isValid(ObjectId) 
 }
 
+//function for performing validation on the value checking it is valid
 const isValidString = function(value) {
     if(typeof value === 'undefined' || value === null) return false
     if(typeof value === 'number' && value.toString().trim().length === 0) return false
@@ -16,6 +17,7 @@ const isValidString = function(value) {
  
 const { body } = require("express-validator");
   
+//express-validator used for validation 
   const userDataValidateChainMethod = [
     body("first_name")
       .exists({ checkFalsy: true })
@@ -51,6 +53,7 @@ const { body } = require("express-validator");
 
   ];
   
+  //validation by using express-validator functions
   const schoolDataValidate = [
     body("name")
         .exists({checkFalsy : true})
@@ -73,7 +76,9 @@ const { body } = require("express-validator");
         .isString()
         .withMessage("country should be string")
   ]
-    
+  
+
+  //exporting all the function
   module.exports = {
     isValidObjectId,
     isValidString,

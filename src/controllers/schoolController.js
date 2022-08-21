@@ -2,6 +2,8 @@ const schoolModel = require('../models/schoolModel');
 const studentModel = require('../models/studentModel');
 const {validationResult} = require('express-validator');
 
+
+//creating the school
 const createSchool = async (req, res, next) => {
     try{
         const errors = validationResult(req);
@@ -18,13 +20,14 @@ const createSchool = async (req, res, next) => {
 
         const schoolData = {name, city, state, country};
         const school = await schoolModel.create(schoolData)
-        res.status(200).send({status: true, message: `school created successfully`, data : school})
+        res.status(201).send({status: true, message: `school created successfully`, data : school})
     }
     catch (err) {
         next()
     }
 }
 
+//get all schooldetail store in database
 const getAllSchools = async (req, res) => {
     try{
        const schooolDetails = await schoolModel.find().select({name:1, city:1, state:1, country:1,created:1, updated:1})
@@ -35,6 +38,7 @@ const getAllSchools = async (req, res) => {
     }
 }
 
+//get all school and it student detail
 const getAllSchoolStudents = async (req, res) => {
     try{
        
@@ -54,4 +58,6 @@ const getAllSchoolStudents = async (req, res) => {
         res.status(500).send({status: false, message: "Error", err: err.message});
     }
 }
+
+//exporting all above controller function to used it into other file
 module.exports = {createSchool, getAllSchools, getAllSchoolStudents};

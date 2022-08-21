@@ -32,5 +32,6 @@ const schoolSchema = new mongoose.Schema({
 })
 
 
+//exporting schema with the model created by using mongoose
 module.exports = mongoose.model("schools", schoolSchema);
 

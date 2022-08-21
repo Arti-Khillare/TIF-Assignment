@@ -10,12 +10,13 @@ const schoolController = require("../controllers/schoolController");
 //imported middleware for authorization
 const middleware = require("../middleware/auth")
 
-//imperted express-validator and validator
+//imported express-validator and validator
 const { checkSchema } = require("express-validator");
 const {userDataValidateChainMethod, schoolDataValidate} = require("../valid/validator");
 
-/*--userAPI's--*/
+
 // using chain api validation from express-validator
+/*--userAPI's--*/
 router.post('/user/signup', userDataValidateChainMethod, UserController.userSignUp);
 router.post('/user/signin', UserController.userSignIn);
 router.get('/user', UserController.getUsers)
@@ -34,4 +35,6 @@ router.post('/school', schoolDataValidate, schoolController.createSchool);
 router.get('/school', schoolController.getAllSchools);
 router.get('/school/students', schoolController.getAllSchoolStudents);
 
+
+//exporting router 
 module.exports = router;

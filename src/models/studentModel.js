@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId
+
 const studentSchema = new mongoose.Schema({
     name : {
         type : String,
@@ -26,6 +27,6 @@ const studentSchema = new mongoose.Schema({
     }
 })
 
-
+//exporting schema with the model created by using mongoose
 module.exports = mongoose.model("students", studentSchema);
 

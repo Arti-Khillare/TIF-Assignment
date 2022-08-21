@@ -19,4 +19,5 @@ const roleSchema = new  mongoose.Schema({
 }) //{timestamps : true}
 
 
+//exporting schema with the model created by using mongoose
 module.exports = mongoose.model("roles", roleSchema);
